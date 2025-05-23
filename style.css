@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #fefae0;
+    color: #780000;
+}
+
+.container {
+    text-align: center;
+}
+
+.intro-container {
+    margin-bottom: 20px;
+}
+
+.piano-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.piano-keys-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+.piano-keys {
+    width: 40px;
+    height: 150px;
+    margin: 2px;
+    cursor: pointer;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 12px;
+    color: gray;
+}
+
+.white-key {
+    background-color: #faedcd;
+}
+
+.black-key {
+    background-color: #264653;
+    color: white;
+    height: 100px;
+    margin-left: -20px;
+    margin-right: -20px;
+    z-index: 1;
+    position: relative;
+}
+
+.piano-keys.active {
+    background-color: #c1121f; /* yellow highlight */
+}
