@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Info Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9fafb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        form {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #222;
+            font-weight: 600;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 20px;
+            border: 1.8px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #3b82f6; /* nice blue */
+            box-shadow: 0 0 5px #3b82f6;
+        }
+
+        button {
+            width: 100%;
+            background-color: #3b82f6;
+            color: white;
+            font-size: 18px;
+            padding: 14px 0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+
+        @media (max-width: 480px) {
+            form {
+                padding: 20px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Please fill this form before playing the piano</h1>
+
+    <form action="https://formspree.io/f/xbloewzv" method="POST" id="userForm">
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="_replyto" required /><br /><br />
+
+        <button type="submit">Submit & Play Piano</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('userForm');
+
+        form.addEventListener('submit', (e) => {
+        e.preventDefault(); // stop default submit
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+            // Redirect to your piano game page on success
+            window.location.href = 'index.html'; // change this to your piano game page URL
+            } else {
+            alert('Oops! There was a problem submitting your form.');
+            }
+        })
+        .catch(() => alert('Oops! There was a problem submitting your form.'));
+        });
+
+    </script>
+</body>
+</html>
